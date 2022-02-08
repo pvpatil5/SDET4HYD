@@ -16,6 +16,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 import com.crm.Vtiger.IAutoConstants;
+import com.crm.Vtiger.JavaUtil;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -64,10 +65,13 @@ public class TC001_CreateOrganization {
 		driver.findElement(By.xpath("//a[.='Organizations']")).click();
 
 		driver.findElement(By.xpath("//img[@title='Create Organization...']")).click();
+		//
+		//		FileInputStream fisexcel = new FileInputStream(IAutoConstants.excelpath);
+		//
+		//		String orgname=WorkbookFactory.create(fisexcel).getSheet("Sheet1").getRow(2).getCell(0).getStringCellValue();
 
-		FileInputStream fisexcel = new FileInputStream(IAutoConstants.excelpath);
-
-		String orgname=WorkbookFactory.create(fisexcel).getSheet("Sheet1").getRow(2).getCell(0).getStringCellValue();
+		JavaUtil jv = new JavaUtil();
+		String orgname = jv.fakecompanyName();
 
 		driver.findElement(By.xpath("//input[@name='accountname']")).sendKeys(orgname);
 
@@ -85,14 +89,15 @@ public class TC001_CreateOrganization {
 		driver.findElement(By.xpath("//input[@name='submit']")).click();
 
 		Thread.sleep(2000);
-		
+
 		String value = driver.findElement(By.xpath("//a[@title='Organizations']")).getText();
 
 		System.out.println(value);
 		if(value.equalsIgnoreCase(orgname)) {
 			System.out.println("TC PASS");
 		}
-		else {
+		else 
+		{
 			System.out.println("TC Fail");
 		}
 

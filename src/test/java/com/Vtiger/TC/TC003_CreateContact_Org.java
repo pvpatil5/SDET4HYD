@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.Properties;
 import java.util.Set;
 
+import org.apache.commons.exec.launcher.Java13CommandLauncher;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,6 +19,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 import com.crm.Vtiger.IAutoConstants;
+import com.crm.Vtiger.JavaUtil;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -72,8 +74,10 @@ public class TC003_CreateContact_Org {
 		Select select = new Select(saltutiontype);
 		select.selectByValue("Mr.");
 
-		String firstname="deer";
-		String lastname="Animal";
+		JavaUtil jv = new JavaUtil();
+		
+		String firstname=jv.fakefirstName();
+		String lastname=jv.fakelastName();
 
 		driver.findElement(By.name("firstname")).sendKeys(firstname);
 
@@ -137,18 +141,6 @@ public class TC003_CreateContact_Org {
 
 		Thread.sleep(10000);
 		driver.close();
-
-
-
-
-
-
-
-
-
-
-
-
 
 	}
 

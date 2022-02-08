@@ -17,13 +17,14 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 import com.crm.Vtiger.IAutoConstants;
+import com.crm.Vtiger.JavaUtil;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TC002_CreateOrg_DD {
 
 	public static void main(String[] args) throws InterruptedException, IOException {
-	
+
 		FileInputStream fis = new FileInputStream(IAutoConstants.propfilepath);
 
 		Properties prop= new Properties();
@@ -67,26 +68,31 @@ public class TC002_CreateOrg_DD {
 		driver.findElement(By.xpath("//img[@title='Create Organization...']")).click();
 
 		FileInputStream fisexcel = new FileInputStream(IAutoConstants.excelpath);
+		JavaUtil jv = new JavaUtil();
+		int randomnumber = jv.generateRandomNumber();
 
-		String orgname=WorkbookFactory.create(fisexcel).getSheet("Sheet1").getRow(2).getCell(0).getStringCellValue();
+		String orgnameexcel=WorkbookFactory.create(fisexcel).getSheet("Sheet1").getRow(2).getCell(0).getStringCellValue();
+
+		String orgname= orgnameexcel+randomnumber;
+
 		driver.findElement(By.xpath("//input[@name='accountname']")).sendKeys(orgname);
 
 		WebElement industrydd = driver.findElement(By.xpath("//select[@name='industry']"));
 
 		WebElement ratingdd = driver.findElement(By.xpath("//select[@name='rating']"));
-		
+
 		WebElement typedd = driver.findElement(By.xpath("//select[@name='accounttype']"));
 
-		
+
 		Select selectIndustry= new Select(industrydd);
 		selectIndustry.selectByValue("Hospitality");
-		
+
 		Select selectrating= new Select(ratingdd);
 		selectrating.selectByIndex(2);
-		
+
 		Select selecttype=new Select(typedd);
 		selecttype.selectByVisibleText("Customer");
-		
+
 		driver.findElement( By.xpath("//input[@class='crmbutton small save']")).click();
 
 		Thread.sleep(2000);
@@ -120,12 +126,12 @@ public class TC002_CreateOrg_DD {
 		Thread.sleep(10000);
 		driver.close();
 
-		
-		
-		
-		
-		
-		
+
+
+
+
+
+
 	}
 
 }
