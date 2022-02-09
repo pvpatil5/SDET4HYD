@@ -1,25 +1,19 @@
 package com.Vtiger.TC;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.time.Duration;
-import java.util.Iterator;
 import java.util.Properties;
-import java.util.Set;
 
-import org.apache.commons.exec.launcher.Java13CommandLauncher;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
 
 import com.crm.Vtiger.IAutoConstants;
 import com.crm.Vtiger.JavaUtil;
+import com.crm.Vtiger.WebDriverUtility;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -56,7 +50,8 @@ public class TC003_CreateContact_Org {
 
 		driver.manage().window().maximize();
 
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		WebDriverUtility webutil= new WebDriverUtility();
+		webutil.pageloadtimeout(driver);
 
 		driver.findElement(By.name("user_name")).sendKeys(prop.getProperty("UN"));
 
@@ -64,18 +59,16 @@ public class TC003_CreateContact_Org {
 
 		driver.findElement(By.id("submitButton")).click();
 
-
 		driver.findElement(By.xpath("//a[.='Contacts']")).click();
 
 		driver.findElement(By.xpath("//img[@title='Create Contact...']")).click();
 
 		WebElement saltutiontype = driver.findElement(By.xpath("//select[@name='salutationtype']"));
 
-		Select select = new Select(saltutiontype);
-		select.selectByValue("Mr.");
+		webutil.selectfromdd("Mr.", saltutiontype);
 
 		JavaUtil jv = new JavaUtil();
-		
+
 		String firstname=jv.fakefirstName();
 		String lastname=jv.fakelastName();
 
@@ -84,15 +77,8 @@ public class TC003_CreateContact_Org {
 		driver.findElement(By.name("lastname")).sendKeys(lastname);
 
 		driver.findElement(By.xpath("//input[@name='account_name']/../img")).click();
-
-		Set<String> windowid = driver.getWindowHandles();
-
-		Iterator<String> itr = windowid.iterator();
-
-		String parent =itr.next();
-		String child =itr.next();
-
-		driver.switchTo().window(child);
+		
+		webutil.swtichtowindow("Accounts", driver);
 
 		Thread.sleep(2000);
 
@@ -101,12 +87,12 @@ public class TC003_CreateContact_Org {
 		driver.findElement(By.id("search_txt")).sendKeys(orgname);
 
 		driver.findElement(By.name("search")).click();
-		
+
 		Thread.sleep(3000);
 
 		driver.findElement(By.xpath("//a[@id='1']")).click();
-
-		driver.switchTo().window(parent);
+		
+		webutil.swtichtowindow("Contacts", driver);
 
 		driver.findElement(By.xpath("//input[@title='Save [Alt+S]']")).click();
 
@@ -115,9 +101,8 @@ public class TC003_CreateContact_Org {
 		driver.findElement(By.xpath("//a[.='Contacts']")).click();
 
 		driver.findElement(By.xpath("//input[@class='txtBox']")).sendKeys(firstname);
-
-		Select select1= new Select(driver.findElement(By.id("bas_searchfield")));
-		select1.selectByValue("firstname");
+		
+		webutil.selectfromdd("firstname", driver.findElement(By.id("bas_searchfield")));
 
 		driver.findElement(By.xpath("//input[@name='submit']")).click();
 
@@ -134,8 +119,7 @@ public class TC003_CreateContact_Org {
 
 		WebElement signoutimg = driver.findElement(By.xpath("//img[@src='themes/softed/images/user.PNG']"));
 
-		Actions action = new Actions(driver);
-		action.moveToElement(signoutimg).build().perform();
+		webutil.movetoelement(driver, signoutimg);
 
 		driver.findElement(By.xpath("//a[.='Sign Out']")).click();
 

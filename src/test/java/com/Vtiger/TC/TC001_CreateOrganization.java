@@ -2,21 +2,18 @@ package com.Vtiger.TC;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.time.Duration;
 import java.util.Properties;
 
-import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
 
 import com.crm.Vtiger.IAutoConstants;
 import com.crm.Vtiger.JavaUtil;
+import com.crm.Vtiger.WebDriverUtility;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -54,8 +51,10 @@ public class TC001_CreateOrganization {
 
 		driver.manage().window().maximize();
 
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
+		WebDriverUtility webutil = new WebDriverUtility();
+		
+		webutil.pageloadtimeout(driver);
+		
 		driver.findElement(By.name("user_name")).sendKeys(prop.getProperty("UN"));
 
 		driver.findElement(By.name("user_password")).sendKeys(prop.getProperty("PWD"));
@@ -83,9 +82,10 @@ public class TC001_CreateOrganization {
 
 		driver.findElement(By.xpath("//input[@class='txtBox']")).sendKeys(orgname);
 
-		Select select = new Select(driver.findElement(By.id("bas_searchfield")));
-		select.selectByVisibleText("Organization Name");
-
+		WebElement element = driver.findElement(By.id("bas_searchfield"));
+		
+		webutil.selectfromdd(element, "Organization Name");
+		
 		driver.findElement(By.xpath("//input[@name='submit']")).click();
 
 		Thread.sleep(2000);
@@ -103,8 +103,7 @@ public class TC001_CreateOrganization {
 
 		WebElement signoutimg = driver.findElement(By.xpath("//img[@src='themes/softed/images/user.PNG']"));
 
-		Actions action = new Actions(driver);
-		action.moveToElement(signoutimg).build().perform();
+		webutil.movetoelement(driver, signoutimg);
 
 		driver.findElement(By.xpath("//a[.='Sign Out']")).click();
 

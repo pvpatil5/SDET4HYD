@@ -1,11 +1,8 @@
 package com.Vtiger.TC;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.time.Duration;
+import java.io.FileInputStream;
 import java.util.Properties;
-
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,12 +10,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
-
 import com.crm.Vtiger.IAutoConstants;
 import com.crm.Vtiger.JavaUtil;
-
+import com.crm.Vtiger.WebDriverUtility;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TC002_CreateOrg_DD {
@@ -55,7 +49,8 @@ public class TC002_CreateOrg_DD {
 
 		driver.manage().window().maximize();
 
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		WebDriverUtility webutil = new WebDriverUtility();
+		webutil.pageloadtimeout(driver);
 
 		driver.findElement(By.name("user_name")).sendKeys(prop.getProperty("UN"));
 
@@ -83,15 +78,11 @@ public class TC002_CreateOrg_DD {
 
 		WebElement typedd = driver.findElement(By.xpath("//select[@name='accounttype']"));
 
+		webutil.selectfromdd("Hospitality", industrydd);
 
-		Select selectIndustry= new Select(industrydd);
-		selectIndustry.selectByValue("Hospitality");
+		webutil.selectfromdd(2, ratingdd);
 
-		Select selectrating= new Select(ratingdd);
-		selectrating.selectByIndex(2);
-
-		Select selecttype=new Select(typedd);
-		selecttype.selectByVisibleText("Customer");
+		webutil.selectfromdd(typedd, "Customer");
 
 		driver.findElement( By.xpath("//input[@class='crmbutton small save']")).click();
 
@@ -101,8 +92,7 @@ public class TC002_CreateOrg_DD {
 
 		driver.findElement(By.xpath("//input[@class='txtBox']")).sendKeys(orgname);
 
-		Select select = new Select(driver.findElement(By.id("bas_searchfield")));
-		select.selectByVisibleText("Organization Name");
+		webutil.selectfromdd("Organization Name", driver.findElement(By.id("bas_searchfield")));
 
 		driver.findElement(By.xpath("//input[@name='submit']")).click();
 
@@ -117,8 +107,7 @@ public class TC002_CreateOrg_DD {
 
 		WebElement signoutimg = driver.findElement(By.xpath("//img[@src='themes/softed/images/user.PNG']"));
 
-		Actions action = new Actions(driver);
-		action.moveToElement(signoutimg).build().perform();
+		webutil.movetoelement(driver, signoutimg);
 
 		driver.findElement(By.xpath("//a[.='Sign Out']")).click();
 
