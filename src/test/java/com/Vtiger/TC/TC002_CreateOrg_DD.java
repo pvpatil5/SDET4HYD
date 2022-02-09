@@ -1,8 +1,8 @@
 package com.Vtiger.TC;
 
-import java.io.IOException;
 import java.io.FileInputStream;
-import java.util.Properties;
+import java.io.IOException;
+
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,25 +10,23 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+import com.crm.Vtiger.FileUtils;
 import com.crm.Vtiger.IAutoConstants;
 import com.crm.Vtiger.JavaUtil;
 import com.crm.Vtiger.WebDriverUtility;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TC002_CreateOrg_DD {
 
 	public static void main(String[] args) throws InterruptedException, IOException {
 
-		FileInputStream fis = new FileInputStream(IAutoConstants.propfilepath);
-
-		Properties prop= new Properties();
-
-		prop.load(fis);
-
+		FileUtils fileutil = new FileUtils();
 		WebDriverManager.chromedriver().setup();
 		WebDriver driver;
 
-		String BROWSER=prop.getProperty("Browser");
+		String BROWSER=fileutil.readDatafromPropfile("Browser");
 
 		if(BROWSER.equalsIgnoreCase("Chrome"))
 		{
@@ -45,16 +43,16 @@ public class TC002_CreateOrg_DD {
 			driver= new FirefoxDriver();
 		}
 
-		driver.get(prop.getProperty("URL"));
+		driver.get(fileutil.readDatafromPropfile("URL"));
 
 		driver.manage().window().maximize();
 
 		WebDriverUtility webutil = new WebDriverUtility();
 		webutil.pageloadtimeout(driver);
 
-		driver.findElement(By.name("user_name")).sendKeys(prop.getProperty("UN"));
+		driver.findElement(By.name("user_name")).sendKeys(fileutil.readDatafromPropfile("UN"));
 
-		driver.findElement(By.name("user_password")).sendKeys(prop.getProperty("PWD"));
+		driver.findElement(By.name("user_password")).sendKeys(fileutil.readDatafromPropfile("PWD"));
 
 		driver.findElement(By.id("submitButton")).click();
 

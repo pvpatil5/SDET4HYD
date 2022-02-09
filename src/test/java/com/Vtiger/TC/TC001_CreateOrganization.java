@@ -1,8 +1,6 @@
 package com.Vtiger.TC;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import com.crm.Vtiger.IAutoConstants;
+import com.crm.Vtiger.FileUtils;
 import com.crm.Vtiger.JavaUtil;
 import com.crm.Vtiger.WebDriverUtility;
 
@@ -21,16 +19,12 @@ public class TC001_CreateOrganization {
 
 	public static void main(String[] args) throws InterruptedException, IOException
 	{
-		FileInputStream fis = new FileInputStream(IAutoConstants.propfilepath);
-
-		Properties prop= new Properties();
-
-		prop.load(fis);
+		FileUtils fileutil = new FileUtils();
 
 		WebDriverManager.chromedriver().setup();
 		WebDriver driver;
 
-		String BROWSER=prop.getProperty("Browser");
+		String BROWSER=fileutil.readDatafromPropfile("Browser");
 
 		if(BROWSER.equalsIgnoreCase("Chrome"))
 		{
@@ -47,17 +41,17 @@ public class TC001_CreateOrganization {
 			driver= new FirefoxDriver();
 		}
 
-		driver.get(prop.getProperty("URL"));
+		driver.get(fileutil.readDatafromPropfile("URL"));
 
 		driver.manage().window().maximize();
 
 		WebDriverUtility webutil = new WebDriverUtility();
-		
-		webutil.pageloadtimeout(driver);
-		
-		driver.findElement(By.name("user_name")).sendKeys(prop.getProperty("UN"));
 
-		driver.findElement(By.name("user_password")).sendKeys(prop.getProperty("PWD"));
+		webutil.pageloadtimeout(driver);
+
+		driver.findElement(By.name("user_name")).sendKeys(fileutil.readDatafromPropfile("UN"));
+
+		driver.findElement(By.name("user_password")).sendKeys(fileutil.readDatafromPropfile("PWD"));
 
 		driver.findElement(By.id("submitButton")).click();
 
@@ -83,9 +77,9 @@ public class TC001_CreateOrganization {
 		driver.findElement(By.xpath("//input[@class='txtBox']")).sendKeys(orgname);
 
 		WebElement element = driver.findElement(By.id("bas_searchfield"));
-		
+
 		webutil.selectfromdd(element, "Organization Name");
-		
+
 		driver.findElement(By.xpath("//input[@name='submit']")).click();
 
 		Thread.sleep(2000);
