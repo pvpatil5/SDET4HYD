@@ -9,6 +9,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import com.crm.ObjectRepo.CreateOrgPage;
+import com.crm.ObjectRepo.HomePage;
+import com.crm.ObjectRepo.LoginPage;
+import com.crm.ObjectRepo.OrgInfoPage;
 import com.crm.Vtiger.FileUtils;
 import com.crm.Vtiger.JavaUtil;
 import com.crm.Vtiger.WebDriverUtility;
@@ -19,8 +23,10 @@ public class TC001_CreateOrganization {
 
 	public static void main(String[] args) throws InterruptedException, IOException
 	{
+		// File util to read the common data
 		FileUtils fileutil = new FileUtils();
 
+		// Launch browser
 		WebDriverManager.chromedriver().setup();
 		WebDriver driver;
 
@@ -40,48 +46,51 @@ public class TC001_CreateOrganization {
 		else {
 			driver= new FirefoxDriver();
 		}
+		
+		//Get URL
 
 		driver.get(fileutil.readDatafromPropfile("URL"));
 
 		driver.manage().window().maximize();
 
+		// WEb Driver Util for accessing driver methods
 		WebDriverUtility webutil = new WebDriverUtility();
 
 		webutil.pageloadtimeout(driver);
+		
+		//POM Classes
+		LoginPage loginpage = new LoginPage(driver);
+		
+		loginpage.getUsernametxtfld().sendKeys(fileutil.readDatafromPropfile("UN"));
 
-		driver.findElement(By.name("user_name")).sendKeys(fileutil.readDatafromPropfile("UN"));
+		loginpage.getPasswordtxtfld().sendKeys(fileutil.readDatafromPropfile("PWD"));
+		
+		loginpage.getLoginbtn().click();
+		
+		HomePage homepage= new HomePage(driver);
+		homepage.getOrginizationlink().click();
 
-		driver.findElement(By.name("user_password")).sendKeys(fileutil.readDatafromPropfile("PWD"));
-
-		driver.findElement(By.id("submitButton")).click();
-
-		driver.findElement(By.xpath("//a[.='Organizations']")).click();
-
-		driver.findElement(By.xpath("//img[@title='Create Organization...']")).click();
-		//
-		//		FileInputStream fisexcel = new FileInputStream(IAutoConstants.excelpath);
-		//
-		//		String orgname=WorkbookFactory.create(fisexcel).getSheet("Sheet1").getRow(2).getCell(0).getStringCellValue();
+		OrgInfoPage orginfopage = new OrgInfoPage(driver);
+		orginfopage.getCreateorgimg().click();
 
 		JavaUtil jv = new JavaUtil();
 		String orgname = jv.fakecompanyName();
 
-		driver.findElement(By.xpath("//input[@name='accountname']")).sendKeys(orgname);
-
-		driver.findElement( By.xpath("//input[@class='crmbutton small save']")).click();
-
+		CreateOrgPage createorgpage= new CreateOrgPage(driver);
+		createorgpage.getOrgname().sendKeys(orgname);
+		
+		createorgpage.getOrgsavebtn().click();
+	
 		Thread.sleep(2000);
 
-		driver.findElement(By.xpath("//a[.='Organizations']")).click();
+		homepage.getOrginizationlink();
 
-		driver.findElement(By.xpath("//input[@class='txtBox']")).sendKeys(orgname);
+		orginfopage.getSearchtxtbox().sendKeys(orgname);
 
-		WebElement element = driver.findElement(By.id("bas_searchfield"));
-
+		WebElement element = orginfopage.getOrgtypesdd();
 		webutil.selectfromdd(element, "Organization Name");
 
-		driver.findElement(By.xpath("//input[@name='submit']")).click();
-
+		orginfopage.getSearchorgbtn();
 		Thread.sleep(2000);
 
 		String value = driver.findElement(By.xpath("//a[@title='Organizations']")).getText();
@@ -95,11 +104,11 @@ public class TC001_CreateOrganization {
 			System.out.println("TC Fail");
 		}
 
-		WebElement signoutimg = driver.findElement(By.xpath("//img[@src='themes/softed/images/user.PNG']"));
+		WebElement signoutimg = homepage.getSignoutimg();
 
 		webutil.movetoelement(driver, signoutimg);
 
-		driver.findElement(By.xpath("//a[.='Sign Out']")).click();
+		homepage.getSignoutlink().click();
 
 
 		Thread.sleep(10000);
