@@ -1,4 +1,4 @@
-package com.crm.Vtiger;
+package com.crm.Vtiger.GenericPac;
 
 import java.time.Duration;
 import java.util.Set;

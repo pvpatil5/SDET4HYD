@@ -1,4 +1,4 @@
-package com.crm.Vtiger;
+package com.crm.Vtiger.GenericPac;
 
 public interface IAutoConstants 
 {

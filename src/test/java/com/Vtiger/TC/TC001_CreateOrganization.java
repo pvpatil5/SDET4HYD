@@ -13,9 +13,9 @@ import com.crm.ObjectRepo.CreateOrgPage;
 import com.crm.ObjectRepo.HomePage;
 import com.crm.ObjectRepo.LoginPage;
 import com.crm.ObjectRepo.OrgInfoPage;
-import com.crm.Vtiger.FileUtils;
-import com.crm.Vtiger.JavaUtil;
-import com.crm.Vtiger.WebDriverUtility;
+import com.crm.Vtiger.GenericPac.FileUtils;
+import com.crm.Vtiger.GenericPac.JavaUtil;
+import com.crm.Vtiger.GenericPac.WebDriverUtility;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -83,14 +83,14 @@ public class TC001_CreateOrganization {
 	
 		Thread.sleep(2000);
 
-		homepage.getOrginizationlink();
+		homepage.getOrginizationlink().click();
 
 		orginfopage.getSearchtxtbox().sendKeys(orgname);
 
 		WebElement element = orginfopage.getOrgtypesdd();
 		webutil.selectfromdd(element, "Organization Name");
 
-		orginfopage.getSearchorgbtn();
+		orginfopage.getSearchorgbtn().click();
 		Thread.sleep(2000);
 
 		String value = driver.findElement(By.xpath("//a[@title='Organizations']")).getText();

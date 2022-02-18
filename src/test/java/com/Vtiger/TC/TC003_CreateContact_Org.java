@@ -9,9 +9,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import com.crm.Vtiger.FileUtils;
-import com.crm.Vtiger.JavaUtil;
-import com.crm.Vtiger.WebDriverUtility;
+import com.crm.ObjectRepo.ContactInfoPage;
+import com.crm.ObjectRepo.ContactOrg_popup;
+import com.crm.ObjectRepo.CreateContactPage;
+import com.crm.ObjectRepo.HomePage;
+import com.crm.ObjectRepo.LoginPage;
+import com.crm.Vtiger.GenericPac.FileUtils;
+import com.crm.Vtiger.GenericPac.JavaUtil;
+import com.crm.Vtiger.GenericPac.WebDriverUtility;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -46,59 +51,70 @@ public class TC003_CreateContact_Org {
 		WebDriverUtility webutil= new WebDriverUtility();
 		webutil.pageloadtimeout(driver);
 
-		driver.findElement(By.name("user_name")).sendKeys(fileutil.readDatafromPropfile("UN"));
+		//POM Classes
+		LoginPage loginpage = new LoginPage(driver);
 
-		driver.findElement(By.name("user_password")).sendKeys(fileutil.readDatafromPropfile("PWD"));
+		loginpage.getUsernametxtfld().sendKeys(fileutil.readDatafromPropfile("UN"));
 
-		driver.findElement(By.id("submitButton")).click();
+		loginpage.getPasswordtxtfld().sendKeys(fileutil.readDatafromPropfile("PWD"));
 
-		driver.findElement(By.xpath("//a[.='Contacts']")).click();
+		loginpage.getLoginbtn().click();
+		
+		HomePage homePage =new HomePage(driver);
+		homePage.getContactslink().click();
+		
+		ContactInfoPage contactInfoPage = new ContactInfoPage(driver);
+		
+		contactInfoPage.getCreatecontactsimg().click();
+		
+		CreateContactPage createContactPage = new CreateContactPage(driver);
 
-		driver.findElement(By.xpath("//img[@title='Create Contact...']")).click();
-
-		WebElement saltutiontype = driver.findElement(By.xpath("//select[@name='salutationtype']"));
-
+		WebElement saltutiontype = createContactPage.getSaltutiontype();
+		
 		webutil.selectfromdd("Mr.", saltutiontype);
 
 		JavaUtil jv = new JavaUtil();
 
 		String firstname=jv.fakefirstName();
 		String lastname=jv.fakelastName();
+		
+		createContactPage.getfirstname().sendKeys(firstname);
 
-		driver.findElement(By.name("firstname")).sendKeys(firstname);
-
-		driver.findElement(By.name("lastname")).sendKeys(lastname);
-
-		driver.findElement(By.xpath("//input[@name='account_name']/../img")).click();
+		createContactPage.getLastNameEdt().sendKeys(lastname);
+		
+		createContactPage.getOrganizationLookUpImage().click();
 
 		webutil.swtichtowindow("Accounts", driver);
 
 		Thread.sleep(2000);
 
 		String orgname="MANGO";
+		
+		ContactOrg_popup contactOrg_popup = new ContactOrg_popup(driver);
+		
+		contactOrg_popup.getSearchorgtxtfld().sendKeys(orgname);
 
-		driver.findElement(By.id("search_txt")).sendKeys(orgname);
-
-		driver.findElement(By.name("search")).click();
+		contactOrg_popup.getSearchbtn().click();
+		//driver.findElement(By.name("search")).click();
 
 		Thread.sleep(3000);
 
 		driver.findElement(By.xpath("//a[@id='1']")).click();
 
 		webutil.swtichtowindow("Contacts", driver);
-
-		driver.findElement(By.xpath("//input[@title='Save [Alt+S]']")).click();
+		
+		createContactPage.getSaveBtn().click();
 
 		Thread.sleep(3000);
+		
+		homePage.getContactslink().click();
+		
+		contactInfoPage.getSearchcontacttxtfld().sendKeys(firstname);
 
-		driver.findElement(By.xpath("//a[.='Contacts']")).click();
+		webutil.selectfromdd("firstname", contactInfoPage.getSearchforcontactDD());
 
-		driver.findElement(By.xpath("//input[@class='txtBox']")).sendKeys(firstname);
-
-		webutil.selectfromdd("firstname", driver.findElement(By.id("bas_searchfield")));
-
-		driver.findElement(By.xpath("//input[@name='submit']")).click();
-
+		contactInfoPage.getSearchcontactbtn().click();
+		
 		Thread.sleep(2000);
 
 		String value=driver.findElement(By.xpath("//a[@title='Organizations']")).getText();
@@ -110,11 +126,11 @@ public class TC003_CreateContact_Org {
 			System.out.println("TC Fail");
 		}
 
-		WebElement signoutimg = driver.findElement(By.xpath("//img[@src='themes/softed/images/user.PNG']"));
+		WebElement signoutimg = homePage.getSignoutimg();
 
 		webutil.movetoelement(driver, signoutimg);
 
-		driver.findElement(By.xpath("//a[.='Sign Out']")).click();
+		homePage.getSignoutlink().click();
 
 		Thread.sleep(10000);
 		driver.close();

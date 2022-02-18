@@ -27,4 +27,26 @@ public class CreateOrgPage
 		this.driver= driver;
 		PageFactory.initElements(driver, this);
 	}
+	
+	@FindBy(name="industry")
+	private WebElement industry;
+	
+	public WebElement getIndustry() {
+		return industry;
+	}
+
+	public WebElement getType() {
+		return type;
+	}
+
+	public WebElement getRating() {
+		return rating;
+	}
+
+	@FindBy(name="accounttype")
+	private WebElement type;
+	
+	@FindBy(name="rating")
+	private WebElement rating;
+	
 }
