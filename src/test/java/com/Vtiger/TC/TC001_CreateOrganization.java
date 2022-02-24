@@ -13,6 +13,7 @@ import com.crm.ObjectRepo.CreateOrgPage;
 import com.crm.ObjectRepo.HomePage;
 import com.crm.ObjectRepo.LoginPage;
 import com.crm.ObjectRepo.OrgInfoPage;
+import com.crm.Vtiger.GenericPac.Base_Class;
 import com.crm.Vtiger.GenericPac.FileUtils;
 import com.crm.Vtiger.GenericPac.JavaUtil;
 import com.crm.Vtiger.GenericPac.WebDriverUtility;
@@ -23,49 +24,18 @@ public class TC001_CreateOrganization {
 
 	public static void main(String[] args) throws InterruptedException, IOException
 	{
-		// File util to read the common data
-		FileUtils fileutil = new FileUtils();
-
-		// Launch browser
-		WebDriverManager.chromedriver().setup();
-		WebDriver driver;
-
-		String BROWSER=fileutil.readDatafromPropfile("Browser");
-
-		if(BROWSER.equalsIgnoreCase("Chrome"))
-		{
-			driver = new ChromeDriver();
-		}
-		else if(BROWSER.equalsIgnoreCase("firefox"))
-		{
-			driver = new FirefoxDriver();	
-		}
-		else if(BROWSER.equalsIgnoreCase("Edge")) {
-			driver= new EdgeDriver();
-		}
-		else {
-			driver= new FirefoxDriver();
-		}
 		
-		//Get URL
 
-		driver.get(fileutil.readDatafromPropfile("URL"));
-
-		driver.manage().window().maximize();
-
-		// WEb Driver Util for accessing driver methods
+		Base_Class base_Class = new Base_Class();
+		
+		WebDriver driver = base_Class.launch_Browser_URL();
+		
 		WebDriverUtility webutil = new WebDriverUtility();
 
 		webutil.pageloadtimeout(driver);
 		
 		//POM Classes
-		LoginPage loginpage = new LoginPage(driver);
 		
-		loginpage.getUsernametxtfld().sendKeys(fileutil.readDatafromPropfile("UN"));
-
-		loginpage.getPasswordtxtfld().sendKeys(fileutil.readDatafromPropfile("PWD"));
-		
-		loginpage.getLoginbtn().click();
 		
 		HomePage homepage= new HomePage(driver);
 		homepage.getOrginizationlink().click();
