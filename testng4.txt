@@ -1,0 +1,32 @@
+@Before Suite --> This is the first Annotaion 
+Any code which we wanna execute only once and that to at the begining.
+
+@After Suite --> This annotation will execute at last.
+Any code which we wanna execute only once and that to at the last..
+for example closing the external connections.
+
+@Before test --> This will help us in execution of when multiple class are there.
+This will execute only once that to after @beforesuite.
+for example --> cross browser execution
+
+@After Test --> 
+
+
+@BeforeClass--> This will Execute for Particular class that to only once.
+if we are having one suite file/testNg.xml file and in that we are having multiple classes then before execution of each class this annotation will execute.
+If before class fails then all other remaing annotation will be skipped.
+
+@AfterClass -->
+if we are having one suite file/testNg.xml file and in that we are having multiple classes then after execution of each class this annotation will execute.
+
+@BeforeMethod
+This annotation will execute every time before execution of @test method.
+Suppose in one class there are 5 @test methods then this annotation will execute 5 times.
+
+@AfterMethod
+This annotation will execute every time After execution of @test method.
+Suppose in one class there are 5 @test methods then this annotation will execute 5 times.
+whether your @test is pass or fail this annotation will execute.
+
+@Test -->
+This is IMP annotation in TestNG. without this class or method will not execute.

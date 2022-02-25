@@ -1,5 +1,6 @@
 package testng.practice;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -11,9 +12,10 @@ import org.testng.annotations.BeforeTest;
 
 public class Base 
 {
-	@BeforeSuite(enabled = false)
+	@BeforeSuite()
 	public void bs() {
 		System.out.println("Before Siute Executed");
+		Assert.assertTrue(false);
 	}
 	
 	@AfterSuite
@@ -24,6 +26,7 @@ public class Base
 	@BeforeClass
 	public void bc() {
 		System.out.println("Before Class");
+		Assert.assertTrue(false);
 	}
 	
 	@AfterClass

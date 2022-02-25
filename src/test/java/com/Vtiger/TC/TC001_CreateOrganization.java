@@ -1,57 +1,38 @@
 package com.Vtiger.TC;
 
-import java.io.IOException;
+import static org.testng.Assert.assertEquals;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import com.crm.ObjectRepo.CreateOrgPage;
 import com.crm.ObjectRepo.HomePage;
-import com.crm.ObjectRepo.LoginPage;
 import com.crm.ObjectRepo.OrgInfoPage;
 import com.crm.Vtiger.GenericPac.Base_Class;
-import com.crm.Vtiger.GenericPac.FileUtils;
-import com.crm.Vtiger.GenericPac.JavaUtil;
-import com.crm.Vtiger.GenericPac.WebDriverUtility;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+public class TC001_CreateOrganization extends Base_Class {
 
-public class TC001_CreateOrganization {
-
-	public static void main(String[] args) throws InterruptedException, IOException
+	@Test
+	public void create_Org() throws InterruptedException
 	{
-		
-
-		Base_Class base_Class = new Base_Class();
-		
-		WebDriver driver = base_Class.launch_Browser_URL();
-		
-		WebDriverUtility webutil = new WebDriverUtility();
-
-		webutil.pageloadtimeout(driver);
-		
-		//POM Classes
-		
-		
 		HomePage homepage= new HomePage(driver);
 		homepage.getOrginizationlink().click();
 
 		OrgInfoPage orginfopage = new OrgInfoPage(driver);
 		orginfopage.getCreateorgimg().click();
 
-		JavaUtil jv = new JavaUtil();
 		String orgname = jv.fakecompanyName();
 
 		CreateOrgPage createorgpage= new CreateOrgPage(driver);
 		createorgpage.getOrgname().sendKeys(orgname);
-		
+
 		createorgpage.getOrgsavebtn().click();
-	
+
 		Thread.sleep(2000);
+
+		driver.navigate().refresh();
 
 		homepage.getOrginizationlink().click();
 
@@ -66,6 +47,9 @@ public class TC001_CreateOrganization {
 		String value = driver.findElement(By.xpath("//a[@title='Organizations']")).getText();
 
 		System.out.println(value);
+
+		//Assert.assertEquals(actual, expected);
+
 		if(value.equalsIgnoreCase(orgname)) {
 			System.out.println("TC PASS");
 		}
@@ -73,16 +57,5 @@ public class TC001_CreateOrganization {
 		{
 			System.out.println("TC Fail");
 		}
-
-		WebElement signoutimg = homepage.getSignoutimg();
-
-		webutil.movetoelement(driver, signoutimg);
-
-		homepage.getSignoutlink().click();
-
-
-		Thread.sleep(10000);
-		driver.close();
-
 	}
 }
