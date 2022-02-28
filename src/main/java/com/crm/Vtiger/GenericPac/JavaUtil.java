@@ -7,20 +7,21 @@ import com.github.javafaker.Faker;
 public class JavaUtil {
 
 	/**
+	 * @author AMAR-G
 	 * This method is going to generate a random number.
-	 * @return random number till 1000
+	 * @return random number till 100
 	 */
 	public int generateRandomNumber() 
 	{
 	Random random = new Random();
-	return random.nextInt(1000);
+	return random.nextInt(100);
 	}
 	/**
 	 * This Method is going to generate fake first name
 	 * @return first name
 	 */
-	
-	public String fakefirstName() {
+	public String fakefirstName() 
+	{
 		Faker faker = new Faker();
 		return faker.name().firstName();
 	}
@@ -43,6 +44,7 @@ public class JavaUtil {
 		return  faker.address().fullAddress();
 	}
 	/**
+	 * @author AMAR-G
 	 * This Method is gonna generate Fake company name
 	 * @return fake company name
 	 */

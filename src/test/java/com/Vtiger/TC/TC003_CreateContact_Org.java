@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.crm.ObjectRepo.ContactInfoPage;
@@ -14,8 +15,8 @@ import com.crm.Vtiger.GenericPac.Base_Class;
 
 public class TC003_CreateContact_Org extends Base_Class{
 
-	@Test
-	public  void create_contact() throws InterruptedException, IOException {
+	@Test(groups = {"regression"})
+	public  void create_contactwithOrg_Test() throws InterruptedException, IOException {
 
 		HomePage homePage =new HomePage(driver);
 		homePage.getContactslink().click();
@@ -73,12 +74,50 @@ public class TC003_CreateContact_Org extends Base_Class{
 
 		String value=driver.findElement(By.xpath("//a[@title='Organizations']")).getText();
 
-		if(value.equalsIgnoreCase(orgname)) {
-			System.out.println("TC PAss");
-		}
-		else {
-			System.out.println("TC Fail");
-		}
+		Assert.assertEquals(value, orgname);
 	}
+	
+	@Test(groups = {"smoke"})
+	public  void create_contact_Test() throws InterruptedException, IOException {
+
+		HomePage homePage =new HomePage(driver);
+		homePage.getContactslink().click();
+
+		ContactInfoPage contactInfoPage = new ContactInfoPage(driver);
+
+		contactInfoPage.getCreatecontactsimg().click();
+
+		CreateContactPage createContactPage = new CreateContactPage(driver);
+
+		WebElement saltutiontype = createContactPage.getSaltutiontype();
+
+		webutil.selectfromdd("Mr.", saltutiontype);
+
+		String firstname=jv.fakefirstName();
+		String lastname=jv.fakelastName();
+
+		createContactPage.getfirstname().sendKeys(firstname);
+
+		createContactPage.getLastNameEdt().sendKeys(lastname);
+
+		createContactPage.getSaveBtn().click();
+
+		Thread.sleep(3000);
+
+		homePage.getContactslink().click();
+
+		contactInfoPage.getSearchcontacttxtfld().sendKeys(firstname);
+
+		webutil.selectfromdd("firstname", contactInfoPage.getSearchforcontactDD());
+
+		contactInfoPage.getSearchcontactbtn().click();
+
+		Thread.sleep(3000);
+
+		String value=driver.findElement(By.xpath("//a[@title='Contacts']")).getText();
+
+		Assert.assertEquals(value, firstname);	
+	}
+
 
 }

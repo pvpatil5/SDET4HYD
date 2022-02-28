@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
@@ -24,20 +25,20 @@ public class Base_Class
 	public WebDriverUtility webutil = new WebDriverUtility();
 	public JavaUtil jv = new JavaUtil();
 	
-	@BeforeSuite
+	@BeforeSuite(groups = {"smoke","regression"})
 	public void makeConnections() 
 	{
 		System.out.println("==Before Suite==");
 		System.out.println("==DB Connection==");
 	}
 
-	@BeforeTest
+	@BeforeTest(groups = {"smoke","regression"})
 	public void beforeTest() 
 	{
 		System.out.println("==Before Test==");
 	}
 
-	@BeforeClass
+	@BeforeClass(groups = {"smoke","regression"})
 	public void launchbrowser_driver_Initilize() throws IOException {
 
 		System.out.println("==launch browser==");
@@ -69,7 +70,7 @@ public class Base_Class
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 	}
 
-	@BeforeMethod
+	@BeforeMethod(groups = {"smoke","regression"})
 	public void logintoApp() throws IOException {
 
 		System.out.println("==Login to App==");
@@ -83,7 +84,7 @@ public class Base_Class
 		loginpage.getLoginbtn().click();
 	}
 
-	@AfterMethod
+	@AfterMethod(groups = {"smoke","regression"})
 	public void logoutFromApp()
 	{
 		HomePage homepage = new HomePage(driver);
@@ -95,8 +96,9 @@ public class Base_Class
 		System.out.println("==Logout form App==");
 	}
 
-	@AfterTest
-	public void tearDown() throws InterruptedException {
+	@AfterClass(groups = {"smoke","regression"})
+	public void tearDown() throws InterruptedException 
+	{
 		Thread.sleep(10000);
 		driver.close();
 	}

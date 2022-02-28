@@ -1,13 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
-  <test thread-count="5" name="Default test(failed)">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <test thread-count="5" name="Test(failed)">
+    <groups>
+      <run>
+        <include name="regression"/>
+      </run>
+    </groups>
     <classes>
-      <class name="practice_test.FutureDate2">
+      <class name="com.Vtiger.TC.TC001_CreateOrganization_Test">
         <methods>
-          <include name="selectcity"/>
+          <include name="launchbrowser_driver_Initilize"/>
+          <include name="logintoApp"/>
+          <include name="create_Org_Test"/>
+          <include name="makeConnections"/>
+          <include name="tearDown"/>
+          <include name="logoutFromApp"/>
+          <include name="beforeTest"/>
         </methods>
-      </class> <!-- practice_test.FutureDate2 -->
+      </class> <!-- com.Vtiger.TC.TC001_CreateOrganization_Test -->
+      <class name="com.Vtiger.TC.TC002_CreateOrg_DD">
+        <methods>
+          <include name="launchbrowser_driver_Initilize"/>
+          <include name="logintoApp"/>
+          <include name="create_Org_DD"/>
+          <include name="makeConnections"/>
+          <include name="tearDown"/>
+          <include name="logoutFromApp"/>
+          <include name="beforeTest"/>
+        </methods>
+      </class> <!-- com.Vtiger.TC.TC002_CreateOrg_DD -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

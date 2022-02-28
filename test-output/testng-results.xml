@@ -1,49 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
+<testng-results skipped="0" failed="2" ignored="6" total="9" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="175322" started-at="2022-02-24T13:21:35 IST" finished-at="2022-02-24T13:24:30 IST">
+  <suite name="Suite" duration-ms="286676" started-at="2022-02-28T13:30:44 IST" finished-at="2022-02-28T13:35:30 IST">
     <groups>
+      <group name="regression">
+        <method signature="TC001_CreateOrganization_Test.create_Org_Test()[pri:0, instance:com.Vtiger.TC.TC001_CreateOrganization_Test@371a67ec]" name="create_Org_Test" class="com.Vtiger.TC.TC001_CreateOrganization_Test"/>
+        <method signature="TC002_CreateOrg_DD.create_Org_DD()[pri:0, instance:com.Vtiger.TC.TC002_CreateOrg_DD@50d0686]" name="create_Org_DD" class="com.Vtiger.TC.TC002_CreateOrg_DD"/>
+        <method signature="TC003_CreateContact_Org.create_contactwithOrg_Test()[pri:0, instance:com.Vtiger.TC.TC003_CreateContact_Org@5ed828d]" name="create_contactwithOrg_Test" class="com.Vtiger.TC.TC003_CreateContact_Org"/>
+      </group> <!-- regression -->
     </groups>
-    <test name="Default test" duration-ms="175322" started-at="2022-02-24T13:21:35 IST" finished-at="2022-02-24T13:24:30 IST">
-      <class name="practice_test.FutureDate2">
-        <test-method status="FAIL" signature="selectcity()[pri:0, instance:practice_test.FutureDate2@23d2a7e8]" name="selectcity" duration-ms="175178" started-at="2022-02-24T13:21:35 IST" finished-at="2022-02-24T13:24:30 IST">
-          <exception class="org.openqa.selenium.ElementNotInteractableException">
+    <test name="Test" duration-ms="286676" started-at="2022-02-28T13:30:44 IST" finished-at="2022-02-28T13:35:30 IST">
+      <class name="com.Vtiger.TC.TC003_CreateContact_Org">
+        <test-method status="PASS" signature="launchbrowser_driver_Initilize()[pri:0, instance:com.Vtiger.TC.TC003_CreateContact_Org@5ed828d]" name="launchbrowser_driver_Initilize" is-config="true" duration-ms="7963" started-at="2022-02-28T13:32:20 IST" finished-at="2022-02-28T13:32:28 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchbrowser_driver_Initilize -->
+        <test-method status="PASS" signature="logintoApp()[pri:0, instance:com.Vtiger.TC.TC003_CreateContact_Org@5ed828d]" name="logintoApp" is-config="true" duration-ms="12861" started-at="2022-02-28T13:32:28 IST" finished-at="2022-02-28T13:32:41 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logintoApp -->
+        <test-method status="PASS" signature="create_contactwithOrg_Test()[pri:0, instance:com.Vtiger.TC.TC003_CreateContact_Org@5ed828d]" name="create_contactwithOrg_Test" duration-ms="72424" started-at="2022-02-28T13:32:41 IST" finished-at="2022-02-28T13:33:53 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- create_contactwithOrg_Test -->
+        <test-method status="PASS" signature="logoutFromApp()[pri:0, instance:com.Vtiger.TC.TC003_CreateContact_Org@5ed828d]" name="logoutFromApp" is-config="true" duration-ms="3848" started-at="2022-02-28T13:33:53 IST" finished-at="2022-02-28T13:33:57 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logoutFromApp -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.Vtiger.TC.TC003_CreateContact_Org@5ed828d]" name="tearDown" is-config="true" duration-ms="10286" started-at="2022-02-28T13:33:57 IST" finished-at="2022-02-28T13:34:07 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.Vtiger.TC.TC003_CreateContact_Org -->
+      <class name="com.Vtiger.TC.TC001_CreateOrganization_Test">
+        <test-method status="PASS" signature="makeConnections()[pri:0, instance:com.Vtiger.TC.TC001_CreateOrganization_Test@371a67ec]" name="makeConnections" is-config="true" duration-ms="35" started-at="2022-02-28T13:30:44 IST" finished-at="2022-02-28T13:30:44 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- makeConnections -->
+        <test-method status="PASS" signature="beforeTest()[pri:0, instance:com.Vtiger.TC.TC001_CreateOrganization_Test@371a67ec]" name="beforeTest" is-config="true" duration-ms="2" started-at="2022-02-28T13:30:44 IST" finished-at="2022-02-28T13:30:44 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTest -->
+        <test-method status="PASS" signature="launchbrowser_driver_Initilize()[pri:0, instance:com.Vtiger.TC.TC001_CreateOrganization_Test@371a67ec]" name="launchbrowser_driver_Initilize" is-config="true" duration-ms="13547" started-at="2022-02-28T13:30:44 IST" finished-at="2022-02-28T13:30:57 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchbrowser_driver_Initilize -->
+        <test-method status="PASS" signature="logintoApp()[pri:0, instance:com.Vtiger.TC.TC001_CreateOrganization_Test@371a67ec]" name="logintoApp" is-config="true" duration-ms="11845" started-at="2022-02-28T13:30:57 IST" finished-at="2022-02-28T13:31:09 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logintoApp -->
+        <test-method status="FAIL" signature="create_Org_Test()[pri:0, instance:com.Vtiger.TC.TC001_CreateOrganization_Test@371a67ec]" name="create_Org_Test" duration-ms="53076" started-at="2022-02-28T13:31:09 IST" finished-at="2022-02-28T13:32:02 IST">
+          <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[element not interactable
-  (Session info: chrome=98.0.4758.102)
-Build info: version: '4.1.2', revision: '9a5a329c5a'
-System info: host: 'AMAR', ip: '192.168.60.231', os.name: 'Windows 8.1', os.arch: 'amd64', os.version: '6.3', java.version: '1.8.0_172'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [7beb84f8f67f95ef2f85016023ff14be, clickElement {id=f9de29df-14ba-4f0d-b460-00ca7dba826e}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 98.0.4758.102, chrome: {chromedriverVersion: 98.0.4758.102 (273bf7ac8c90..., userDataDir: C:\Users\AMAR-G\AppData\Loc...}, goog:chromeOptions: {debuggerAddress: localhost:62788}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:62788/devtoo..., se:cdpVersion: 98.0.4758.102, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on WINDOWS (7beb84f8f67f95ef2f85016023ff14be)] -> xpath: //span[@aria-label='Next Month']]
-Session ID: 7beb84f8f67f95ef2f85016023ff14be]]>
+              <![CDATA[expected [Russel and Sons] but found [SONY_TYSS537]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.ElementNotInteractableException: element not interactable
-  (Session info: chrome=98.0.4758.102)
-Build info: version: '4.1.2', revision: '9a5a329c5a'
-System info: host: 'AMAR', ip: '192.168.60.231', os.name: 'Windows 8.1', os.arch: 'amd64', os.version: '6.3', java.version: '1.8.0_172'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [7beb84f8f67f95ef2f85016023ff14be, clickElement {id=f9de29df-14ba-4f0d-b460-00ca7dba826e}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 98.0.4758.102, chrome: {chromedriverVersion: 98.0.4758.102 (273bf7ac8c90..., userDataDir: C:\Users\AMAR-G\AppData\Loc...}, goog:chromeOptions: {debuggerAddress: localhost:62788}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:62788/devtoo..., se:cdpVersion: 98.0.4758.102, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on WINDOWS (7beb84f8f67f95ef2f85016023ff14be)] -> xpath: //span[@aria-label='Next Month']]
-Session ID: 7beb84f8f67f95ef2f85016023ff14be
-at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:167)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:142)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:558)
-at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:251)
-at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:77)
-at practice_test.FutureDate2.selectcity(FutureDate2.java:47)
+              <![CDATA[java.lang.AssertionError: expected [Russel and Sons] but found [SONY_TYSS537]
+at org.testng.Assert.fail(Assert.java:97)
+at org.testng.Assert.assertEqualsImpl(Assert.java:136)
+at org.testng.Assert.assertEquals(Assert.java:118)
+at org.testng.Assert.assertEquals(Assert.java:575)
+at org.testng.Assert.assertEquals(Assert.java:585)
+at com.Vtiger.TC.TC001_CreateOrganization_Test.create_Org_Test(TC001_CreateOrganization_Test.java:48)
 at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -74,11 +93,188 @@ at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 ]]>
             </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- create_Org_Test -->
+        <test-method status="FAIL" signature="logoutFromApp()[pri:0, instance:com.Vtiger.TC.TC001_CreateOrganization_Test@371a67ec]" name="logoutFromApp" is-config="true" duration-ms="17570" started-at="2022-02-28T13:32:02 IST" finished-at="2022-02-28T13:32:20 IST">
+          <exception class="org.openqa.selenium.ElementNotInteractableException">
+            <message>
+              <![CDATA[element not interactable
+  (Session info: chrome=98.0.4758.102)
+Build info: version: '4.1.2', revision: '9a5a329c5a'
+System info: host: 'AMAR', ip: '192.168.60.231', os.name: 'Windows 8.1', os.arch: 'amd64', os.version: '6.3', java.version: '1.8.0_172'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [9fd5a0ce15d26ebdc216bb3d76fe83f8, clickElement {id=7734557a-4eb2-41e5-8e59-562f316f8f4d}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 98.0.4758.102, chrome: {chromedriverVersion: 98.0.4758.102 (273bf7ac8c90..., userDataDir: C:\Users\AMAR-G\AppData\Loc...}, goog:chromeOptions: {debuggerAddress: localhost:54063}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:54063/devtoo..., se:cdpVersion: 98.0.4758.102, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on WINDOWS (9fd5a0ce15d26ebdc216bb3d76fe83f8)] -> xpath: //a[.='Sign Out']]
+Session ID: 9fd5a0ce15d26ebdc216bb3d76fe83f8]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.ElementNotInteractableException: element not interactable
+  (Session info: chrome=98.0.4758.102)
+Build info: version: '4.1.2', revision: '9a5a329c5a'
+System info: host: 'AMAR', ip: '192.168.60.231', os.name: 'Windows 8.1', os.arch: 'amd64', os.version: '6.3', java.version: '1.8.0_172'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [9fd5a0ce15d26ebdc216bb3d76fe83f8, clickElement {id=7734557a-4eb2-41e5-8e59-562f316f8f4d}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 98.0.4758.102, chrome: {chromedriverVersion: 98.0.4758.102 (273bf7ac8c90..., userDataDir: C:\Users\AMAR-G\AppData\Loc...}, goog:chromeOptions: {debuggerAddress: localhost:54063}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:54063/devtoo..., se:cdpVersion: 98.0.4758.102, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on WINDOWS (9fd5a0ce15d26ebdc216bb3d76fe83f8)] -> xpath: //a[.='Sign Out']]
+Session ID: 9fd5a0ce15d26ebdc216bb3d76fe83f8
+at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:167)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:142)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:558)
+at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:251)
+at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:77)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.lang.reflect.Method.invoke(Method.java:498)
+at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:52)
+at com.sun.proxy.$Proxy18.click(Unknown Source)
+at com.crm.Vtiger.GenericPac.Base_Class.logoutFromApp(Base_Class.java:95)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.lang.reflect.Method.invoke(Method.java:498)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:134)
+at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:63)
+at org.testng.internal.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:348)
+at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:302)
+at org.testng.internal.TestInvoker.runConfigMethods(TestInvoker.java:695)
+at org.testng.internal.TestInvoker.runAfterGroupsConfigurations(TestInvoker.java:671)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:655)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:816)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.util.ArrayList.forEach(ArrayList.java:1257)
+at org.testng.TestRunner.privateRun(TestRunner.java:766)
+at org.testng.TestRunner.run(TestRunner.java:587)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1187)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1109)
+at org.testng.TestNG.runSuites(TestNG.java:1039)
+at org.testng.TestNG.run(TestNG.java:1007)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
           </exception> <!-- org.openqa.selenium.ElementNotInteractableException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- selectcity -->
-      </class> <!-- practice_test.FutureDate2 -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+        </test-method> <!-- logoutFromApp -->
+        <test-method status="SKIP" signature="tearDown()[pri:0, instance:com.Vtiger.TC.TC001_CreateOrganization_Test@371a67ec]" name="tearDown" is-config="true" duration-ms="-1646035340458" started-at="2022-02-28T13:32:20 IST" finished-at="1970-01-01T05:30:00 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.Vtiger.TC.TC001_CreateOrganization_Test -->
+      <class name="com.Vtiger.TC.TC002_CreateOrg_DD">
+        <test-method status="PASS" signature="launchbrowser_driver_Initilize()[pri:0, instance:com.Vtiger.TC.TC002_CreateOrg_DD@50d0686]" name="launchbrowser_driver_Initilize" is-config="true" duration-ms="6986" started-at="2022-02-28T13:34:07 IST" finished-at="2022-02-28T13:34:14 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchbrowser_driver_Initilize -->
+        <test-method status="PASS" signature="logintoApp()[pri:0, instance:com.Vtiger.TC.TC002_CreateOrg_DD@50d0686]" name="logintoApp" is-config="true" duration-ms="12273" started-at="2022-02-28T13:34:14 IST" finished-at="2022-02-28T13:34:27 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logintoApp -->
+        <test-method status="FAIL" signature="create_Org_DD()[pri:0, instance:com.Vtiger.TC.TC002_CreateOrg_DD@50d0686]" name="create_Org_DD" duration-ms="49387" started-at="2022-02-28T13:34:27 IST" finished-at="2022-02-28T13:35:16 IST">
+          <exception class="org.openqa.selenium.NoSuchElementException">
+            <message>
+              <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":"//a[@title='Organizations']"}
+  (Session info: chrome=98.0.4758.102)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.1.2', revision: '9a5a329c5a'
+System info: host: 'AMAR', ip: '192.168.60.231', os.name: 'Windows 8.1', os.arch: 'amd64', os.version: '6.3', java.version: '1.8.0_172'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [e6d6c8341513b23b784c33805f052fce, findElement {using=xpath, value=//a[@title='Organizations']}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 98.0.4758.102, chrome: {chromedriverVersion: 98.0.4758.102 (273bf7ac8c90..., userDataDir: C:\Users\AMAR-G\AppData\Loc...}, goog:chromeOptions: {debuggerAddress: localhost:54801}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:54801/devtoo..., se:cdpVersion: 98.0.4758.102, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: e6d6c8341513b23b784c33805f052fce]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//a[@title='Organizations']"}
+  (Session info: chrome=98.0.4758.102)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.1.2', revision: '9a5a329c5a'
+System info: host: 'AMAR', ip: '192.168.60.231', os.name: 'Windows 8.1', os.arch: 'amd64', os.version: '6.3', java.version: '1.8.0_172'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [e6d6c8341513b23b784c33805f052fce, findElement {using=xpath, value=//a[@title='Organizations']}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 98.0.4758.102, chrome: {chromedriverVersion: 98.0.4758.102 (273bf7ac8c90..., userDataDir: C:\Users\AMAR-G\AppData\Loc...}, goog:chromeOptions: {debuggerAddress: localhost:54801}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:54801/devtoo..., se:cdpVersion: 98.0.4758.102, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: e6d6c8341513b23b784c33805f052fce
+at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:167)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:142)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:558)
+at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:162)
+at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:60)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:382)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:374)
+at com.Vtiger.TC.TC002_CreateOrg_DD.create_Org_DD(TC002_CreateOrg_DD.java:53)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.lang.reflect.Method.invoke(Method.java:498)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:134)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:597)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:816)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.util.ArrayList.forEach(ArrayList.java:1257)
+at org.testng.TestRunner.privateRun(TestRunner.java:766)
+at org.testng.TestRunner.run(TestRunner.java:587)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1187)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1109)
+at org.testng.TestNG.runSuites(TestNG.java:1039)
+at org.testng.TestNG.run(TestNG.java:1007)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- create_Org_DD -->
+        <test-method status="PASS" signature="logoutFromApp()[pri:0, instance:com.Vtiger.TC.TC002_CreateOrg_DD@50d0686]" name="logoutFromApp" is-config="true" duration-ms="4121" started-at="2022-02-28T13:35:16 IST" finished-at="2022-02-28T13:35:20 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logoutFromApp -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.Vtiger.TC.TC002_CreateOrg_DD@50d0686]" name="tearDown" is-config="true" duration-ms="10246" started-at="2022-02-28T13:35:20 IST" finished-at="2022-02-28T13:35:30 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.Vtiger.TC.TC002_CreateOrg_DD -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
 </testng-results>

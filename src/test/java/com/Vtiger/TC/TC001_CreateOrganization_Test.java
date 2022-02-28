@@ -1,21 +1,18 @@
 package com.Vtiger.TC;
 
-import static org.testng.Assert.assertEquals;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import com.crm.ObjectRepo.CreateOrgPage;
 import com.crm.ObjectRepo.HomePage;
 import com.crm.ObjectRepo.OrgInfoPage;
 import com.crm.Vtiger.GenericPac.Base_Class;
 
-public class TC001_CreateOrganization extends Base_Class {
+public class TC001_CreateOrganization_Test extends Base_Class {
 
-	@Test
-	public void create_Org() throws InterruptedException
+	@Test(groups = {"regression"})
+	public void create_Org_Test() throws InterruptedException
 	{
 		HomePage homepage= new HomePage(driver);
 		homepage.getOrginizationlink().click();
@@ -48,14 +45,30 @@ public class TC001_CreateOrganization extends Base_Class {
 
 		System.out.println(value);
 
-		//Assert.assertEquals(actual, expected);
+		Assert.assertEquals(value, orgname);
+	}
 
-		if(value.equalsIgnoreCase(orgname)) {
-			System.out.println("TC PASS");
-		}
-		else 
-		{
-			System.out.println("TC Fail");
-		}
+	@Test(groups = {"smoke"})
+	public void create_emptyorg_Test() throws InterruptedException 
+	{
+		HomePage homepage= new HomePage(driver);
+		homepage.getOrginizationlink().click();
+
+		OrgInfoPage orginfopage = new OrgInfoPage(driver);
+		orginfopage.getCreateorgimg().click();
+
+		CreateOrgPage createorgpage= new CreateOrgPage(driver);
+
+		createorgpage.getOrgsavebtn().click();
+
+		String text =	webutil.getTextFromAlert(driver);
+		
+		Assert.assertEquals(text, "Organization Name cannot be empty");
+		
+		webutil.dismissAlert(driver);
+		
+		
+
+
 	}
 }

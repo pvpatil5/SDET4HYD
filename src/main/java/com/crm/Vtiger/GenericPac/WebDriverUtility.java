@@ -98,6 +98,17 @@ public class WebDriverUtility
 		driver.switchTo().alert().sendKeys(text);
 	}
 
+	/**
+	 * @author AMAR-G
+	 * This method is gonna give text from Alert popup
+	 * @param driver
+	 * @param text
+	 * @return
+	 */
+	public String getTextFromAlert(WebDriver driver) {
+		return driver.switchTo().alert().getText();
+	}
+
 	public void switchframe(WebDriver driver, int index)
 	{
 		driver.switchTo().frame(index);

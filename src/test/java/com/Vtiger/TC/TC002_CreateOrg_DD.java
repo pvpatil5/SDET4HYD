@@ -1,23 +1,21 @@
 package com.Vtiger.TC;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.apache.poi.EncryptedDocumentException;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import com.crm.ObjectRepo.CreateOrgPage;
 import com.crm.ObjectRepo.HomePage;
 import com.crm.ObjectRepo.OrgInfoPage;
 import com.crm.Vtiger.GenericPac.Base_Class;
-import com.crm.Vtiger.GenericPac.IAutoConstants;
-import com.crm.Vtiger.GenericPac.JavaUtil;
 
 public class TC002_CreateOrg_DD extends Base_Class{
 
+	
+	@Test(groups = {"regression"})
 	public void create_Org_DD() throws EncryptedDocumentException, IOException, InterruptedException {
 
 		HomePage homepage= new HomePage(driver);
@@ -26,13 +24,7 @@ public class TC002_CreateOrg_DD extends Base_Class{
 		OrgInfoPage orginfopage = new OrgInfoPage(driver);
 		orginfopage.getCreateorgimg().click();
 
-		FileInputStream fisexcel = new FileInputStream(IAutoConstants.excelpath);
-
-		int randomnumber = jv.generateRandomNumber();
-
-		String orgnameexcel=WorkbookFactory.create(fisexcel).getSheet("Sheet1").getRow(2).getCell(0).getStringCellValue();
-
-		String orgname= orgnameexcel+randomnumber;
+		String orgname= jv.fakecompanyName();
 
 		CreateOrgPage createorgpage= new CreateOrgPage(driver);
 		createorgpage.getOrgname().sendKeys(orgname);
@@ -55,14 +47,11 @@ public class TC002_CreateOrg_DD extends Base_Class{
 		webutil.selectfromdd(element, "Organization Name");
 
 		orginfopage.getSearchorgbtn().click();
+		
+		Thread.sleep(3000);
 
 		String value = driver.findElement(By.xpath("//a[@title='Organizations']")).getText();
 
-		if(value.equalsIgnoreCase(orgname)) {
-			System.out.println("TC PASS");
-		}
-		else {
-			System.out.println("TC Fail");
-		}
+		Assert.assertEquals(value,orgname);
 	}
 }
