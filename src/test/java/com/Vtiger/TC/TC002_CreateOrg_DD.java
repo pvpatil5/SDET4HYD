@@ -16,7 +16,7 @@ public class TC002_CreateOrg_DD extends Base_Class{
 
 	
 	@Test(groups = {"regression"})
-	public void create_Org_DD() throws EncryptedDocumentException, IOException, InterruptedException {
+	public void create_Org_DD_Test() throws EncryptedDocumentException, IOException, InterruptedException {
 
 		HomePage homepage= new HomePage(driver);
 		homepage.getOrginizationlink().click();

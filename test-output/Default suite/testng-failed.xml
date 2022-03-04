@@ -3,17 +3,11 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.Vtiger.TC.TC002_CreateOrg_DD">
+      <class name="testng.practice.TestNG_1">
         <methods>
-          <include name="launchbrowser_driver_Initilize"/>
-          <include name="logintoApp"/>
-          <include name="create_Org_DD"/>
-          <include name="makeConnections"/>
-          <include name="tearDown"/>
-          <include name="logoutFromApp"/>
-          <include name="beforeTest"/>
+          <include name="sample"/>
         </methods>
-      </class> <!-- com.Vtiger.TC.TC002_CreateOrg_DD -->
+      </class> <!-- testng.practice.TestNG_1 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

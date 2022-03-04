@@ -2,6 +2,7 @@ package com.crm.Vtiger.GenericPac;
 
 import java.io.IOException;
 import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,13 +10,16 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
+
+import com.beust.jcommander.Parameter;
 import com.crm.ObjectRepo.HomePage;
 import com.crm.ObjectRepo.LoginPage;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Base_Class
@@ -32,20 +36,23 @@ public class Base_Class
 		System.out.println("==DB Connection==");
 	}
 
+
 	@BeforeTest(groups = {"smoke","regression"})
 	public void beforeTest() 
 	{
 		System.out.println("==Before Test==");
 	}
 
+	@Parameters("BROWSER")
 	@BeforeClass(groups = {"smoke","regression"})
-	public void launchbrowser_driver_Initilize() throws IOException {
+	public void launchbrowser_driver_Initilize(String BROWSER) throws IOException {
 
 		System.out.println("==launch browser==");
 
 		WebDriverManager.chromedriver().setup();
+		WebDriverManager.firefoxdriver().setup();
 
-		String BROWSER=fileutil.readDatafromPropfile("Browser");
+	//	String BROWSER=fileutil.readDatafromPropfile("Browser");
 
 
 		if(BROWSER.equalsIgnoreCase("Chrome"))
